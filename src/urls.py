@@ -1,6 +1,6 @@
-"""kartpool URL Configuration
+"""URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list routes URLs to views.
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
 Examples:
 Function views
@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from stores import views as stores_views
 from wishlists import views as wishlists_views
-from home import views as home_views
+from homepage import views as home_views
 
 # Create a router and register viewsets with it
 router = DefaultRouter()
