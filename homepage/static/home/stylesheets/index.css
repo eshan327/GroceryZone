@@ -69,28 +69,17 @@ main {
     align-items: flex-start;
 }
 
+/* Flex item styles */
 .flex-item:nth-child(1) {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
     order: 0;
-    -webkit-flex: 1 1 0;
-    -ms-flex: 1 1 0;
     flex: 1 1 0;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
     align-self: auto;
     margin-right: 0.62em;
 }
 
 .flex-item:nth-child(2) {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
     order: 0;
-    -webkit-flex: 2 1 auto;
-    -ms-flex: 2 1 auto;
     flex: 2 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
     align-self: auto;
 }
 
@@ -285,7 +274,7 @@ button.fulfilled {
 }
 
 #my-trips:empty::before {
-    content: "Would you like to help a neighbor out? Pick one of the wishes nearby you!";
+    content: "Maybe pick one of the wishlist items nearby you?";
     color: grey;
 }
 

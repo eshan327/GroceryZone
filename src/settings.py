@@ -16,22 +16,21 @@ import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Initialize environment variables
 env = environ.Env()
-# reading .env file
+# Reading .env file
 environ.Env.read_env()
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y28k1h^%3@vkjt3vn()3163a_x43tbhv6e)ktg@3)*!mnk_1w&'
+SECRET_KEY = env('SECRET_KEY', default='y28k1h^%3@vkjt3vn()3163a_x43tbhv6e)ktg@3)*!mnk_1w&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Application definition
 
