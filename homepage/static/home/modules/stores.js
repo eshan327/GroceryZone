@@ -66,3 +66,24 @@ export function setStoreNavigation(map, storesGeoJson) {
         }
     }
 }
+
+/**
+ * Fetch store details by store ID
+ * @param {string} storeId - The ID of the store
+ * @return {Promise<Store>} The store details
+ */
+export async function fetchStoreDetails(storeId) {
+    try {
+        const response = await fetch(`/stores/${storeId}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
+        return await response.json();
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}

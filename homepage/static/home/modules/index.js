@@ -16,6 +16,9 @@ import {
     addGeocoder,
 } from './map.js';
 
+import { fetchNearbyStores } from './api.js';
+import { formatDate } from './helpers.js';
+
 export const USERNAME = document.body.getAttribute('data-username');
 
 let MAP = {};
@@ -43,3 +46,16 @@ const wishlists = document.getElementsByClassName('wishlists');
 for (let i=0; i<wishlists.length; i++) {
     wishlists[i].addEventListener('click', updateWishlistStatus);
 }
+
+// Initialize the application
+async function initializeApp() {
+    try {
+        const stores = await fetchNearbyStores(37.7749, -122.4194); // Example coordinates for San Francisco
+        console.log('Nearby stores:', stores);
+    } catch (error) {
+        console.error('Error fetching nearby stores:', error);
+    }
+}
+
+// Call the initialize function to start the application
+initializeApp();

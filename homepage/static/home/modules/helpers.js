@@ -93,3 +93,15 @@ export function updateWishlistNode(element, status) {
         element.disabled = true;
     }
 }
+
+// Adding any necessary helper functions if need for it discovered
+
+/**
+ * Format a date to a readable string
+ * @param {Date} date
+ * @return {string} Formatted date string
+ */
+export function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+}

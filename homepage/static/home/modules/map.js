@@ -160,3 +160,44 @@ export function displayStoreDetails(map, point) {
         .addTo(map);
     return popup;
 }
+
+/**
+ * Initialize a map centered at the given coordinates
+ * @param {number} latitude
+ * @param {number} longitude
+ * @param {string} mapElementId - The ID of the HTML element to render the map in
+ */
+export function initializeMap(latitude, longitude, mapElementId) {
+    const map = new google.maps.Map(document.getElementById(mapElementId), {
+        center: { lat: latitude, lng: longitude },
+        zoom: 12
+    });
+
+    // Add a marker at the center
+    new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map
+    });
+}
+
+/**
+ * Create and add a popup to the map
+ * @param {Object} map - The map instance
+ * @param {Object} coordinates - The coordinates for the popup
+ * @param {string} content - The HTML content for the popup
+ * @return {Object} The created popup
+ */
+export function addPopupToMap(map, coordinates, content) {
+    const popup = new mapboxgl.Popup({ offset: 25 })
+        .setLngLat([coordinates.lng, coordinates.lat])
+        .setHTML(`
+            <details>
+                <summary>Details</summary>
+                <dl>
+                    ${content}
+                </dl>
+            </details>
+        `)
+        .addTo(map);
+    return popup;
+}

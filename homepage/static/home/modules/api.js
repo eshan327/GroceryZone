@@ -30,14 +30,18 @@
  * @return {Promise<Store[]>} Array of stores
  */
 export async function fetchNearbyStores(latitude, longitude) {
-    const response = await fetch(`/stores?lat=${latitude}&lng=${longitude}`, {
-        method: 'GET'
-    });
+    try {
+        const response = await fetch(`/stores?lat=${latitude}&lng=${longitude}`, {
+            method: 'GET'
+        });
 
-    if (response.ok) {
-        return response.json();
-    } else {
-        return Promise.reject(Error(response.statusText));
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
+        return await response.json();
+    } catch (error) {
+        return Promise.reject(error);
     }
 }
 

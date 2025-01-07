@@ -104,3 +104,24 @@ export async function updateWishlistStatus(event) {
             break;
     }
 }
+
+/**
+ * Fetch wishlist details by wishlist ID
+ * @param {string} wishlistId - The ID of the wishlist
+ * @return {Promise<Wishlist>} The wishlist details
+ */
+export async function fetchWishlistDetails(wishlistId) {
+    try {
+        const response = await fetch(`/wishlists/${wishlistId}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
+        return await response.json();
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
